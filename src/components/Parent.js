@@ -1,11 +1,17 @@
-import Child from './Child';
+import { useState } from 'react';
+import ChildA from './ChildA';
+import ChildB from './ChildB';
 
 function Parent() {
+  const [pData, setPData] = useState('Parent Data');
+  //給ChildB設定回資料用的狀態
+  const [data, setData] = useState('');
+
   return (
     <>
-      <Child name="Ryan" text="18" />
-      {/* <Child text={123} name={true} /> */}
-      <Child />
+      <h2>Parent</h2>
+      <ChildB setData={setData} />
+      <ChildA data={data} />
     </>
   );
 }
