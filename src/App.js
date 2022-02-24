@@ -10,10 +10,12 @@ import SocialShare from './components/SocialShare';
 import List from './components/list';
 import Hw2 from './components/Hw2';
 import Cart from './components/Cart';
-import './App.css';
 import OrderList from './components/OrderList';
 import Summary from './components/Summary';
 import { useState } from 'react';
+import Form from './components/Form';
+import FCForm from './components/FCForm';
+import Auth from './components/Auth';
 
 // 產品訂購的項目
 const products = [
@@ -60,9 +62,11 @@ function App() {
   // 多樣產品狀態：陣列
   // ex. 三樣商品 -> [1,1,1]
   // 下面兩種方式均可
-  const [counts, setCounts] = useState(initState(products));
-  //const [counts, setCounts] = useState(Array(products.length).fill(1))
 
+  const [productsValue, setProductsValue] = useState(products);
+
+  const [counts, setCounts] = useState(initState(productsValue));
+  //const [counts, setCounts] = useState(Array(products.length).fill(1))
   // Summary
   // 計算目前所有的商品數量
   const productCount = () => {
@@ -79,8 +83,8 @@ function App() {
   const total = () => {
     let sum = 0;
 
-    for (let i = 0; i < products.length; i++) {
-      sum += counts[i] * products[i].price;
+    for (let i = 0; i < productsValue.length; i++) {
+      sum += counts[i] * productsValue[i].price;
     }
 
     return sum;
@@ -100,12 +104,16 @@ function App() {
       <div className="card">
         <div className="row">
           <OrderList
-            products={products}
+            products={productsValue}
             setCounts={setCounts}
             counts={counts}
+            setProductsValue={setProductsValue}
           />
-          <Summary productCount={productCount} total={total()} />
+          <Summary productCount={productCount()} total={total()} />
         </div>
+        <Form />
+        <FCForm />
+        <Auth />
       </div>
     </>
   );

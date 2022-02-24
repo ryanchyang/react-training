@@ -26,8 +26,9 @@ import ProductItem from './ProductItem';
 // ];
 
 function OrderList(props) {
-  const { products, counts, setCounts } = props;
-
+  const { products, counts, setCounts, setProductsValue } = props;
+  
+  
   return (
     <>
       <div className="col-md-8 cart">
@@ -67,6 +68,10 @@ function OrderList(props) {
                 //3. 設定回原本的狀態
                 setCounts(newCounts);
               }}
+              counts={counts}
+              setCounts={setCounts}
+              products={products}
+              setProductsValue={setProductsValue}
             />
           );
         })}

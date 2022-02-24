@@ -8,8 +8,30 @@ function ProductItem(props) {
   //        price:300
   //    }
 
-  const { id, name, categroy, image, price, count, setCount } = props;
+  const {
+    id,
+    name,
+    categroy,
+    image,
+    price,
+    count,
+    setCount,
+    products,
+    setProductsValue,
+    counts,
+    setCounts,
+  } = props;
 
+  const deleteHandler = id => {
+    console.log(products);
+
+    const newArr = products.filter(obj => id !== obj.id);
+    const index = products.findIndex(obj => id === obj.id);
+    setProductsValue(newArr);
+    const newCounts = [...counts];
+    newCounts.splice(index, 1);
+    setCounts(newCounts);
+  };
   return (
     <>
       <div className="row border-top border-bottom">
@@ -43,7 +65,10 @@ function ProductItem(props) {
             </a>
           </div>
           <div className="col">
-            ${price} <span className="close">&#10005;</span>
+            ${price}{' '}
+            <span className="close" onClick={() => deleteHandler(id)}>
+              &#10005;
+            </span>
           </div>
         </div>
       </div>
