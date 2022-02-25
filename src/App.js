@@ -1,21 +1,27 @@
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 // 導入一般的js物件檔
 import { data } from './data/student';
 // 導入json一樣會自動轉為js 物件
-import students from './data/student.json';
-import FC from './components/FC';
-import Parent from './components/Parent';
-import SocialShare from './components/SocialShare';
-import List from './components/list';
-import Hw2 from './components/Hw2';
-import Cart from './components/Cart';
-import OrderList from './components/OrderList';
-import Summary from './components/Summary';
+// import students from './data/student.json';
+// import FC from './components/FC';
+// import Parent from './components/Parent';
+// import SocialShare from './components/SocialShare';
+// import List from './components/list';
+// import Hw2 from './components/Hw2';
+// import Cart from './components/Cart';
+// import OrderList from './components/OrderList';
+// import Summary from './components/Summary';
 import { useState } from 'react';
-import Form from './components/Form';
-import FCForm from './components/FCForm';
-import Auth from './components/Auth';
+// import Form from './components/Form';
+// import FCForm from './components/FCForm';
+// import Auth from './components/Auth';
+// import IdForm from './components/IdForm';
+// import RefsForm from './components/RefsForm';
+// import CCLifecycle from './components/CCLifecycle';
+// import FCLifecycle from './components/FCLifecycle';
+// import UserList from './components/UserList';
+import BS4RegisterForm from './components/BS4RegisterForm';
 
 // 產品訂購的項目
 const products = [
@@ -67,6 +73,9 @@ function App() {
 
   const [counts, setCounts] = useState(initState(productsValue));
   //const [counts, setCounts] = useState(Array(products.length).fill(1))
+
+  const [alive, setAlive] = useState(true);
+
   // Summary
   // 計算目前所有的商品數量
   const productCount = () => {
@@ -101,7 +110,7 @@ function App() {
       <SocialShare url="http://localhost:3000" round={true} />
       <List />
       <Hw2 /> */}
-      <div className="card">
+      {/* <div className="card">
         <div className="row">
           <OrderList
             products={productsValue}
@@ -112,9 +121,26 @@ function App() {
           <Summary productCount={productCount()} total={total()} />
         </div>
         <Form />
-        <FCForm />
-        <Auth />
-      </div>
+        <FCForm /> */}
+      {/* <Auth /> */}
+      {/* <RefsForm />
+        <br />
+        <RefsForm />
+        <hr />
+        <IdForm />
+        <br />
+        <IdForm /> */}
+      {/* </div> */}
+      {/* {alive && <FCLifecycle />}
+      <button
+        onClick={() => {
+          setAlive(!alive);
+        }}
+      >
+        {alive ? '再見' : '出現'}
+      </button>
+      <UserList /> */}
+      <BS4RegisterForm />;
     </>
   );
   // return (
@@ -139,6 +165,7 @@ function App() {
   //     {/* {new Date()} */}
   //     <h2>Function(警告)</h2>
   //     {() => console.log(123)}
+
   //   </>
   // );
 }

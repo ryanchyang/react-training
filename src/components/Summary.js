@@ -3,7 +3,6 @@ import React from 'react';
 function Summary(props) {
   const { productCount, total } = props;
 
-  console.log(productCount);
   return (
     <>
       <div className="col-md-4 summary">

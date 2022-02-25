@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './menu.css';
+// import './menu.css';
 
 // 解答
 // https://codesandbox.io/s/homework-1-array-1mm18
@@ -13,10 +13,10 @@ function List() {
     prod: false,
   });
 
-  const checkStatus = (event) => {
+  const checkStatus = event => {
     if (state[event.target.id] === false) {
       event.target.className = 'active';
-      setState((prev) => {
+      setState(prev => {
         return {
           ...prev,
           [event.target.id]: true,
@@ -24,7 +24,7 @@ function List() {
       });
     } else {
       event.target.className = '';
-      setState((prev) => {
+      setState(prev => {
         return {
           ...prev,
           [event.target.id]: false,
