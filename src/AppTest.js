@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useReducer } from 'react';
-import './App.css';
+import './App.scss';
 import FilterBar from './components/FilterBar';
 import ProdList from './components/ProdList';
 import SearchBar from './components/SearchBar';
@@ -11,7 +11,6 @@ const initDisplayState = {
   search: '',
   tags: [],
   isSort: '',
-  reset: '',
 };
 
 const displayStateReducer = (state, action) => {
@@ -20,7 +19,6 @@ const displayStateReducer = (state, action) => {
       search: action.search,
       tags: state.tags,
       isSort: state.isSort,
-      reset: state.reset,
     };
   }
   if (action.type === 'SORT') {
@@ -28,7 +26,6 @@ const displayStateReducer = (state, action) => {
       search: state.search,
       tags: state.tags,
       isSort: action.isSort,
-      reset: state.reset,
     };
   }
   if (action.type === 'TAGS') {
@@ -36,16 +33,10 @@ const displayStateReducer = (state, action) => {
       search: state.search,
       tags: action.tags,
       isSort: state.isSort,
-      reset: state.reset,
     };
   }
   if (action.type === 'RESET') {
-    return {
-      search: action.search,
-      tags: action.tags,
-      isSort: action.isSort,
-      reset: state.reset,
-    };
+    return initDisplayState;
   }
 };
 function App() {
@@ -56,40 +47,6 @@ function App() {
     displayStateReducer,
     initDisplayState
   );
-
-  // const searchHandler = e => {
-  //   if (e.target.value) {
-  //     const newArr = [...displayProducts].filter(prod => {
-  //       const prodName = prod.name
-  //         .split(' ')
-  //         .map(name => name.toLowerCase())
-  //         .join('');
-  //       return prodName.includes(e.target.value.toLowerCase());
-  //     });
-  //     setDisplayProducts(newArr);
-  //   } else {
-  //     setDisplayProducts(data);
-  //   }
-  // };
-
-  // const sortHandler = e => {
-  //   if (e.target.value) {
-  //     if (e.target.value === 'asc') {
-  //       const newArr = [...displayProducts].sort((a, b) => {
-  //         return a.price - b.price;
-  //       });
-  //       setDisplayProducts(newArr);
-  //     }
-  //     if (e.target.value === 'desc') {
-  //       const newArr = [...displayProducts].sort((a, b) => {
-  //         return b.price - a.price;
-  //       });
-  //       setDisplayProducts(newArr);
-  //     }
-  //   } else {
-  //     setDisplayProducts(data);
-  //   }
-  // };
 
   useEffect(() => {
     let newProds = [...products];

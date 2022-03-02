@@ -6,9 +6,6 @@ function FilterBar(props) {
   const resetHandler = () => {
     dispatch({
       type: 'RESET',
-      search: '',
-      tags: [],
-      isSort: '',
     });
   };
 
